@@ -1,11 +1,31 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template.loader import get_template
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login
+from django.urls import reverse
 
 # Create your views here.
 
+
 def login(request):
-    return render(request, "login.html")
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(reverse('index'))
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(username=username, password=password)
+    if user is not None:
+        login(request, user)
+        return HttpResponseRedirect(reverse('index'))
+    else:
+        return render(request, "login.html", {"error": "Could not authenticate!"})
+
+
+def signup(request):
+    username = request.POST['username']
+    password = request.POST['passowrd']
+    email = request.POST['email']
+
+    return render(request, "signup.html")
 
 
 def logout(request):
