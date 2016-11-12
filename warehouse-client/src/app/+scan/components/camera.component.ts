@@ -1,5 +1,6 @@
 import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChange, OnInit, AfterViewInit, OnDestroy, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'my-camera',
@@ -10,12 +11,17 @@ import { Subscription } from 'rxjs/Subscription';
   `],
   template: `
     <video #videoDOM class="my-video"></video>
+    
+    <button (click)="onTakePhoto()">Test</button>
+    <canvas #photoDOM></canvas>
   `
 })
 export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input() stream: any;
   @ViewChild('videoDOM') videoDOM: ElementRef;
+  @ViewChild('photoDOM') photoDOM: ElementRef;
   video: any;
+  photo: any;
   subsShowVideoStream: Subscription;
   showVideoStream = new EventEmitter<void>();
 
@@ -41,11 +47,18 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
 
   ngAfterViewInit() {
     this.video = this.videoDOM.nativeElement;
+    this.photo = this.photoDOM.nativeElement;
 
     this.showVideoStream.emit(null);
   }
 
   ngOnDestroy() {
     if (this.subsShowVideoStream) this.subsShowVideoStream.unsubscribe();
+  }
+
+  onTakePhoto() {
+    const canvas = this.photo;
+    const context = canvas.getContext('2d');
+    context.drawImage(this.video, 0, 0, canvas.width, canvas.height);
   }
 }
