@@ -6,3 +6,4 @@ class Item(models.Model):
     itemname = models.CharField(max_length=64, null=True)
     cost = models.FloatField(null=True)
     count = models.PositiveIntegerField(null=False)
+    hidden = models.PositiveIntegerField(null=False)

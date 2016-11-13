@@ -63,10 +63,12 @@ def index(request):
             if action == 1:
                 inst = models.Item.objects.get(pk=itemno)
                 inst.count += 1
+                inst.hidden += 1
                 inst.save()
             else:
                 inst = models.Item.objects.get(pk=itemno)
                 inst.count -= 1
+                inst.hidden += 1
                 inst.save()
         except:
             return HttpResponseRedirect(reverse('index'))
@@ -91,13 +93,18 @@ def newEntry(request):
                 inst = models.Item.objects.get(pk=itemno)
                 inst.count += count
                 inst.cost = cost
+                inst.hidden += count
                 inst.itemname = itemname
                 inst.save()
             else:
-                inst = models.Item.objects.create(itemno=itemno, itemname=itemname, cost=cost, count=count)
+                inst = models.Item.objects.create(itemno=itemno, itemname=itemname, cost=cost, count=count, hidden=count)
                 inst.save()
             status = "Successfully created entry!"
         except:
             status = "Error occurred!"
             
-    return render(request, "entry.html", {"status": status})
+    return render(request, "entry.html", {"name":request.user.first_name, "status": status})
+
+
+def analytics(request):
+    pass
