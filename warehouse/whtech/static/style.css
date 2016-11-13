@@ -144,7 +144,7 @@ html {
 }
 
 body {
-	background-color: #121317;
+	background-color: #222327;
 	font-family: 'Open Sans';
 	font-weight: 200;
 	overflow: initial;
@@ -362,8 +362,19 @@ i.color-circle {
 	padding: 8px 8px 8px 16px;
 	text-decoration: none;
 }
+.sidebar li h2, .navbar li h2 {
+	display: block;
+	margin: 0;
+	padding: 8px 8px 8px 16px;
+	text-decoration: none;
+}
 
 .navbar li a {
+	height: 54px;
+	font-size: 24px;
+}
+
+.navbar li h2 {
 	height: 54px;
 	font-size: 24px;
 }
@@ -910,4 +921,27 @@ i.color-circle {
 }
 .text-dark-navy {
 	color: #2c3e50 !important;
+}
+table {
+    border-collapse: collapse;
+    width: 83%;
+}
+
+td, th {
+    padding: 8px;
+}
+
+th {
+    text-align: left;
+	background-color: #e74c3c !important;
+	color: #ecf0f1 !important;
+}
+td {
+	text-align: center;
+}
+tr:nth-child(even) {
+    background-color: #ecf0f1;
+}
+tr:nth-child(odd) {
+    background-color: #bdc3c7;
 }
