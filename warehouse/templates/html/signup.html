@@ -1,33 +1,36 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Username: </label>
-        <input type="text" name="username" />
-        
-        <label for="first">First Name: </label>
-        <input type="text" name="first" />
-        
-        <label for="last">Last Name: </label>
-        <input type="text" name="last" />
-        
-        <label for="email">E-mail: </label>
-        <input type="email" name="email" />
-        
-        <label for="password">Password: </label>
-        <input type="password" name="password" />
-        
-        <label for="password2">Repeat Password:</label>
-        <input type="password" name="password2" />
-        
-        <a href="/login"><input type="button" value="Login" /></a>
-        <input type="submit" title="submit" />
-    </form>
-    {% if error is not None %}
-        <p class="error">{{error}}</p>
-    {% endif %}
-    {% if match is not None %}
-        <p class="error">{{match}}</p>
-    {% endif %}
+    <div class="section group">
+        <form method="post" style="position: relative;">
+            {% csrf_token %}
+            <div class="col c-1-1 border-red" style="position: absolute; top: 50%; left: 50%; transform: translate(-10%, 40%);">
+                <h1 class="text-white border-red" style="border-left: 10px solid; padding-left: 10px; font-weight: bold;"> Register</h1>
+                <input type="text" name="username" class="textbox m-top m-bottom" placeholder="Username" style="width: 20%"/>
+                
+                <input type="text" name="first" class="textbox m-top m-bottom" placeholder="First Name" style="width: 20%"/>
+
+                <input type="text" name="last" class="textbox m-top m-bottom" placeholder="Last Name" style="width: 20%"/>
+
+                <input type="email" name="email" class="textbox m-top m-bottom" placeholder="Email" style="width: 20%"/>
+
+                <input type="password" name="password" class="textbox m-top m-bottom" placeholder="Password" style="width: 20%"/>
+          
+                <input type="password" name="password2" class="textbox m-top m-bottom" placeholder="Repeat Password" style="width: 20%"/>
+                
+                <input type="submit" title="submit" value="Register" class="btn red m-top m-bottom" style="width: 20%; border: 0;"/><br/>
+                <a href="/login" class="text-red" style="text-decoration: none;">Login</a>
+            </div>
+        </form>
+        {% if error is not None %}
+            <div class="col c-1-1">
+                <p class="error text-red" align="center">{{error}}</p>
+            </div>
+        {% endif %}
+        {% if match is not None %}
+            <div class="col c-1-1">
+                <p class="error text-red" align="center">{{match}}</p>
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

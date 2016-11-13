@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-        <label for="username">Username: </label>
-        <input type="text" name="username" />
-        
-        <label for="password">Password: </label>
-        <input type="password" name="password" />
-        
-        <a href="/signup"><input type="button" value="Sign Up" /></a>
-        <input type="submit" title="submit" />
-    </form>
-    {% if error is not None %}
-        <p class="error">{{ error }}</p>
-    {% endif %}
+    <div class="section group">
+        <form method="post" style="position: relative;">
+            {% csrf_token %}
+            <div class="col c-1-1 border-red" style="position: absolute; top: 50%; left: 50%; transform: translate(-10%, 75%);">
+                <h1 class="text-white border-red" style="border-left: 10px solid; padding-left: 10px; font-weight: bold;"> Login</h1>
+                <input type="text" name="username" class="textbox m-top m-bottom" placeholder="Username" style="width: 20%"/>
+                
+                <input type="password" name="password" class="textbox m-top m-bottom" placeholder="Password" style="width: 20%"/>
+            
+                <input type="submit" title="submit" class="btn red m-top m-bottom" value="Login" style="width: 20%; border: 0;"/><br/>
+                <a href="/signup" class="text-red" style="text-decoration: none;">Create Account</a>
+            </div>
+        </form>
+        {% if error is not None %}
+            <div class="col c-1-1">
+                <p class="error text-red" align="center"> {{ error }}</p>
+            </div>
+        {% endif %}
+    </div>
+
 {% endblock %}
