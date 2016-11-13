@@ -1855,6 +1855,12 @@ custom-event@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/custom-event/-/custom-event-1.0.1.tgz#5d02a46850adf1b4a317946a3928fccb5bfd0425"
 
+cwise-compiler@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/cwise-compiler/-/cwise-compiler-1.1.2.tgz#3bcbfd063bd1d69d25b3eebfc56df0de15d4c9d0"
+  dependencies:
+    uniq "^1.0.0"
+
 d@^0.1.1, d@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/d/-/d-0.1.1.tgz#da184c535d18d8ee7ba2aa229b914009fae11309"
@@ -1866,6 +1872,10 @@ dashdash@^1.12.0:
   resolved "https://registry.yarnpkg.com/dashdash/-/dashdash-1.14.0.tgz#29e486c5418bf0f356034a993d51686a33e84141"
   dependencies:
     assert-plus "^1.0.0"
+
+data-uri-to-buffer@0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-0.0.3.tgz#18ae979a6a0ca994b0625853916d2662bbae0b1a"
 
 date-now@^0.1.4:
   version "0.1.4"
@@ -3004,6 +3014,22 @@ get-caller-file@^1.0.0, get-caller-file@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.2.tgz#f702e63127e7e231c160a80c1554acb70d5047e5"
 
+get-pixels@^3.2.3:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/get-pixels/-/get-pixels-3.3.0.tgz#8d9795beae18850b840f749581badc05d3e36e41"
+  dependencies:
+    data-uri-to-buffer "0.0.3"
+    jpeg-js "^0.1.1"
+    mime-types "^2.0.1"
+    ndarray "^1.0.13"
+    ndarray-pack "^1.1.1"
+    node-bitmap "0.0.1"
+    omggif "^1.0.5"
+    parse-data-uri "^0.2.0"
+    pngjs "^2.0.0"
+    request "^2.44.0"
+    through "^2.3.4"
+
 get-stdin@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/get-stdin/-/get-stdin-4.0.1.tgz#b968c6b0a04384324902e8bf1a5df32579a450fe"
@@ -3025,6 +3051,18 @@ github-url-from-git@~1.4.0:
 github-url-from-username-repo@~1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/github-url-from-username-repo/-/github-url-from-username-repo-1.0.2.tgz#7dd79330d2abe69c10c2cef79714c97215791dfa"
+
+gl-mat2@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gl-mat2/-/gl-mat2-1.0.0.tgz#22c06f06bbc141a8bfac7d8573f5528f1de29d46"
+
+gl-vec2@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/gl-vec2/-/gl-vec2-1.0.0.tgz#77fce6ae9612856d6c8b621cd261cd8281b9c637"
+
+gl-vec3@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/gl-vec3/-/gl-vec3-1.0.3.tgz#110fd897d0729f6398307381567d0944941bf22b"
 
 glob-base@^0.3.0:
   version "0.3.0"
@@ -3557,6 +3595,10 @@ invert-kv@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/invert-kv/-/invert-kv-1.0.0.tgz#104a8e4aaca6d3d8cd157a8ef8bfab2d7a3ffdb6"
 
+iota-array@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/iota-array/-/iota-array-1.0.0.tgz#81ef57fe5d05814cd58c2483632a99c30a0e8087"
+
 ipaddr.js@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.1.1.tgz#c791d95f52b29c1247d5df80ada39b8a73647230"
@@ -3875,6 +3917,10 @@ jodid25519@^1.0.0:
   resolved "https://registry.yarnpkg.com/jodid25519/-/jodid25519-1.0.2.tgz#06d4912255093419477d425633606e0e90782967"
   dependencies:
     jsbn "~0.1.0"
+
+jpeg-js@^0.1.1:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/jpeg-js/-/jpeg-js-0.1.2.tgz#135b992c0575c985cfa0f494a3227ed238583ece"
 
 js-base64@^2.1.9:
   version "2.1.9"
@@ -4714,7 +4760,7 @@ mime-db@~1.24.0:
   version "1.24.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.24.0.tgz#e2d13f939f0016c6e4e9ad25a8652f126c467f0c"
 
-mime-types@^2.1.11, mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.7:
+mime-types@^2.0.1, mime-types@^2.1.11, mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.7:
   version "2.1.12"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.12.tgz#152ba256777020dd4663f54c2e7bc26381e71729"
   dependencies:
@@ -4848,6 +4894,24 @@ ncname@1.0.x:
   dependencies:
     xml-char-classes "^1.0.0"
 
+ndarray-linear-interpolate@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/ndarray-linear-interpolate/-/ndarray-linear-interpolate-1.0.0.tgz#78bc92b85b9abc15b6e67ee65828f9e2137ae72b"
+
+ndarray-pack@^1.1.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/ndarray-pack/-/ndarray-pack-1.2.1.tgz#8caebeaaa24d5ecf70ff86020637977da8ee585a"
+  dependencies:
+    cwise-compiler "^1.1.2"
+    ndarray "^1.0.13"
+
+ndarray@^1.0.13, ndarray@^1.0.18:
+  version "1.0.18"
+  resolved "https://registry.yarnpkg.com/ndarray/-/ndarray-1.0.18.tgz#b60d3a73224ec555d0faa79711e502448fd3f793"
+  dependencies:
+    iota-array "^1.0.0"
+    is-buffer "^1.0.2"
+
 negotiator@0.4.9:
   version "0.4.9"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.4.9.tgz#92e46b6db53c7e421ed64a2bc94f08be7630df3f"
@@ -4861,6 +4925,10 @@ no-case@^2.2.0:
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.0.tgz#ca2825ccb76b18e6f79d573dcfbf1eace33dd164"
   dependencies:
     lower-case "^1.1.1"
+
+node-bitmap@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/node-bitmap/-/node-bitmap-0.0.1.tgz#180eac7003e0c707618ef31368f62f84b2a69091"
 
 node-emoji@^1.4.1:
   version "1.4.1"
@@ -5263,6 +5331,10 @@ offline-plugin@^3.4.1:
     loader-utils "0.2.x"
     minimatch "^3.0.2"
 
+omggif@^1.0.5:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/omggif/-/omggif-1.0.8.tgz#178f37b2ab0b3d7b46ed3a0e46bd0790b58d3530"
+
 on-finished@~2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/on-finished/-/on-finished-2.3.0.tgz#20f1336481b083cd75337992a16971aa2d906947"
@@ -5397,6 +5469,12 @@ parse-asn1@^5.0.0:
     evp_bytestokey "^1.0.0"
     pbkdf2 "^3.0.3"
 
+parse-data-uri@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/parse-data-uri/-/parse-data-uri-0.2.0.tgz#bf04d851dd5c87b0ab238e5d01ace494b604b4c9"
+  dependencies:
+    data-uri-to-buffer "0.0.3"
+
 parse-glob@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/parse-glob/-/parse-glob-3.0.4.tgz#b2c376cfb11f35513badd173ef0bb6e3a388391c"
@@ -5520,6 +5598,10 @@ pinkie-promise@^2.0.0, pinkie-promise@^2.0.1:
 pinkie@^2.0.0, pinkie@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
+
+pngjs@^2.0.0:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/pngjs/-/pngjs-2.3.1.tgz#11d1e12b9cb64d63e30c143a330f4c1f567da85f"
 
 portfinder@^1.0.3:
   version "1.0.10"
@@ -5944,6 +6026,19 @@ qs@6.2.0:
   version "6.2.0"
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.2.0.tgz#3b7848c03c2dece69a9522b0fae8c4126d745f3b"
 
+quagga:
+  version "0.11.5"
+  resolved "https://registry.yarnpkg.com/quagga/-/quagga-0.11.5.tgz#16e55607eab8014fe695560c6397ffdeb3bbcbe5"
+  dependencies:
+    get-pixels "^3.2.3"
+    gl-mat2 "^1.0.0"
+    gl-vec2 "^1.0.0"
+    gl-vec3 "^1.0.3"
+    lodash "^4.6.1"
+    ndarray "^1.0.18"
+    ndarray-linear-interpolate "^1.0.0"
+    webrtc-adapter "^2.0.2"
+
 query-string@^4.1.0:
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/query-string/-/query-string-4.2.3.tgz#9f27273d207a25a8ee4c7b8c74dcd45d556db822"
@@ -6328,7 +6423,7 @@ replace-ext@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/replace-ext/-/replace-ext-0.0.1.tgz#29bbd92078a739f0bcce2b4ee41e837953522924"
 
-request@^2.27.0, request@^2.47.0, request@^2.61.0, request@^2.69.0, request@^2.75.0, request@^2.78.0, request@>=2.42.0, request@2:
+request@^2.27.0, request@^2.44.0, request@^2.47.0, request@^2.61.0, request@^2.69.0, request@^2.75.0, request@^2.78.0, request@>=2.42.0, request@2:
   version "2.78.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.78.0.tgz#e1c8dec346e1c81923b24acdb337f11decabe9cc"
   dependencies:
@@ -6549,6 +6644,10 @@ script-loader@^0.7.0:
   resolved "https://registry.yarnpkg.com/script-loader/-/script-loader-0.7.0.tgz#685dc7e7069e0dee7a92674f0ebc5b0f55baa5ec"
   dependencies:
     raw-loader "~0.5.1"
+
+sdp@^1.0.0:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/sdp/-/sdp-1.0.2.tgz#2586c8889fedbcd8448c95754c1e34fb12f97ffe"
 
 select-hose@^2.0.0:
   version "2.0.0"
@@ -7246,7 +7345,7 @@ text-table@~0.2.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/textextensions/-/textextensions-2.0.1.tgz#be8cf22d65379c151319f88f0335ad8f667abdca"
 
-through@^2.3.6, through@~2.3, through@~2.3.1, through@~2.3.8, through@2:
+through@^2.3.4, through@^2.3.6, through@~2.3, through@~2.3.1, through@~2.3.8, through@2:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
 
@@ -7529,7 +7628,7 @@ underscore@>=1.8.3:
   version "1.8.3"
   resolved "https://registry.yarnpkg.com/underscore/-/underscore-1.8.3.tgz#4f3fb53b106e6097fcf9cb4109f2a5e9bdfa5022"
 
-uniq@^1.0.1:
+uniq@^1.0.0, uniq@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/uniq/-/uniq-1.0.1.tgz#b31c5ae8254844a3a8281541ce2b04b865a734ff"
 
@@ -7831,6 +7930,12 @@ webpack@2.1.0-beta.25:
     watchpack "^1.0.0"
     webpack-sources "^0.1.0"
     yargs "^4.7.1"
+
+webrtc-adapter@^2.0.2:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/webrtc-adapter/-/webrtc-adapter-2.0.6.tgz#f2e67bfd959c488b9e44b92d86fc262b56e36b06"
+  dependencies:
+    sdp "^1.0.0"
 
 websocket-driver@>=0.5.1:
   version "0.6.5"

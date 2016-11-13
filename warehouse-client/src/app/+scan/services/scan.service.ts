@@ -29,7 +29,10 @@ export class ScanService {
     // this.store.dispatch({ type: CallActions.CALL_NEW_CHAT, payload: this.otherId });
 
 
-    const constraints = { audio: false, video: true };
+    const constraints = { audio: false, video: {
+      width: { ideal: 1280 },
+      height: { ideal: 1024 }
+    } };
 
     navigator.mediaDevices.getUserMedia(constraints)
       .then(stream => {

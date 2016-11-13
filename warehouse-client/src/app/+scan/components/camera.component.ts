@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChange, OnInit, AfterViewInit, OnDestroy, EventEmitter } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
+const Quagga = require('quagga');
 
 @Component({
   selector: 'my-camera',
@@ -12,7 +13,7 @@ import * as _ from 'lodash';
   template: `
     <video #videoDOM class="my-video"></video>
     
-    <button (click)="onTakePhoto()">Test</button>
+    <button (click)="onTakePhoto()">Scan</button>
     <canvas #photoDOM></canvas>
   `
 })
@@ -57,8 +58,31 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
   }
 
   onTakePhoto() {
-    const canvas = this.photo;
-    const context = canvas.getContext('2d');
-    context.drawImage(this.video, 0, 0, canvas.width, canvas.height);
+    // const canvas = this.photo;
+    // const context = canvas.getContext('2d');
+    // context.drawImage(this.video, 0, 0, canvas.width, canvas.height);
+
+    Quagga.init({
+      inputStream : {
+        name : "Live",
+        type : "LiveStream",
+        target: this.video    // Or '#yourElement' (optional)
+      },
+      decoder : {
+        readers : ["upc_reader", "upc_e_reader"]
+      }
+    }, function(err) {
+      if (err) {
+        console.log(err);
+        return
+      }
+      console.log("Initialization finished. Ready to start");
+      Quagga.start();
+
+      Quagga.onDetected(res => {
+        // console.log('res', res);
+        alert(res);
+      })
+    });
   }
 }
