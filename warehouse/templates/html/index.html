@@ -2,18 +2,16 @@
 
 {% block content %}
 	<ul class="navbar navy">
-		<li><a href="#" class="grey-hover">Home</a></li>
-		<li><a href="#" class="grey-hover">About</a></li>
-		<li><a href="#" class="grey-active grey-hover">Projects</a></li>
-		<li><a href="#" class="grey-hover">Contact</a></li>
+		<li style=" float: right; padding-right: 10px;"><a href="/logout" class="text-red" style="text-decoration: none;">Logout</a></li>
+		<li style=" float: right; padding-right: 10px;"><h2>Welcome, {{ name }}</h2></li>
 	</ul>
-	<ul class="sidebar navy" style="float: left; padding: 0; margin: 0;">
-		<li><a href="#" class="grey-hover">Home</a></li>
-	  	<li><a href="#" class="grey-hover">About</a></li>
-	  	<li><a href="#" class="grey-active grey-hover">Projects</a></li>
-	  	<li><a href="#" class="grey-hover">Contact</a></li>
+	<ul class="sidebar dark-white" style="float: left; margin-right: 10px;">
+		<li><a href="#" class="red-hover">Home</a></li>
+	  	<li><a href="#" class="red-hover">About</a></li>
+	  	<li><a href="#" class="red-active dark-red-hover">Projects</a></li>
+	  	<li><a href="#" class="red-hover">Contact</a></li>
 	</ul>
 	<div style="padding-left: 10px;">
-    	<h1>Welcome to WarehouseTech, {{ name }}</h1>
+    	<h1 class="text-white">Welcome to WarehouseTech, {{ name }}</h1>
    	</div>
 {% endblock %}
