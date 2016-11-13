@@ -65,6 +65,10 @@
   dependencies:
     tsickle "^0.1.7"
 
+"@ng-bootstrap/ng-bootstrap":
+  version "1.0.0-alpha.13"
+  resolved "https://registry.yarnpkg.com/@ng-bootstrap/ng-bootstrap/-/ng-bootstrap-1.0.0-alpha.13.tgz#0c7037ab261b1e3a176e278e4728b02e89d963da"
+
 "@ngtools/webpack@latest":
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-1.1.4.tgz#1bdd40ba911b4c4e81a1427e71f40e5449aa5551"
