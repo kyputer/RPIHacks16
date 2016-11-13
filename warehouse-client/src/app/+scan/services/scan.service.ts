@@ -9,6 +9,8 @@ import { extractData, handleError } from '../../shared/lib/';
 export class ScanService {
   private leaguesUrl = `${Configs.httpUrl}/api/leagues`;
   stream: any;
+  videoIds: string[] = [];
+  videoId: string = 'select';
 
   constructor(
     private http: Http
@@ -21,17 +23,31 @@ export class ScanService {
       .catch(handleError);
   }
 
-  scan() {
+  getVideoIdList() {
     if (!this.hasUserMedia()) {
       alert('Sorry, your cannot call because of browser compatibility. Please use Chrome, Firefox, or Opera.');
       return;
     }
-    // this.store.dispatch({ type: CallActions.CALL_NEW_CHAT, payload: this.otherId });
 
+    navigator.mediaDevices.enumerateDevices()
+      .then(devices => {
+        devices.forEach(device => {
+          if (device.kind === 'videoinput') {
+            // alert(device.deviceId);
+            this.videoIds = [...this.videoIds, device.deviceId];
+          }
+        });
+        console.log('this.videoIds', this.videoIds);
+      });
+  }
+
+  scan(videoId: string) {
+    this.videoId = videoId;
 
     const constraints = { audio: false, video: {
-      width: { ideal: 1280 },
-      height: { ideal: 1024 }
+      // width: { ideal: 1280 },
+      // height: { ideal: 1024 },
+      deviceId: this.videoId ? { exact: this.videoId } : undefined
     } };
 
     navigator.mediaDevices.getUserMedia(constraints)

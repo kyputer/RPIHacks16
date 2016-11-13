@@ -69,7 +69,13 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
         target: this.video    // Or '#yourElement' (optional)
       },
       decoder : {
-        readers : ["upc_reader", "upc_e_reader"]
+        readers : ["upc_reader", "upc_e_reader"],
+        debug: {
+          drawBoundingBox: true,
+          showFrequency: true,
+          drawScanline: true,
+          showPattern: true
+        }
       }
     }, function(err) {
       if (err) {
@@ -80,8 +86,8 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
       Quagga.start();
 
       Quagga.onDetected(res => {
-        // console.log('res', res);
-        alert(res);
+        console.log('res', res);
+        // alert(res);
       })
     });
   }
