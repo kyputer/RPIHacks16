@@ -12,17 +12,6 @@
 	  	<li><a href="/logout" class="red-hover">Logout</a></li>
 	</ul>
 	<div style="padding-left: 10px;">
-        <form method="post">
-            {% csrf_token %}
-            <select name="opt">
-                <option value="total">Rank by Total Value</option>
-                <option value="cost">Rank by Cost</option>
-                <option value="amount">Rank by Count</option>
-                <option value="recentval">Smart Rank by Total Value</option>
-                <option value="recentamount">Smart Rank by Amount Sales</option>
-            </select>
-            <input type="submit" />
-        </form>
         <table class="m-top">
             <tr>
                 <th>Item name:</th>
@@ -37,5 +26,15 @@
             </tr>
             {% endfor %}
         </table>
+        <form method="post" class="p-top" style="position: absolute; right: 28px;">
+            {% csrf_token %}
+            <select name="opt" onchange="this.form.submit()">
+                <option value="total">Rank by Total Value</option>
+                <option value="cost">Rank by Cost</option>
+                <option value="amount">Rank by Count</option>
+                <option value="recentval">Smart Rank by Total Value</option>
+                <option value="recentamount">Smart Rank by Amount Sales</option>
+            </select>
+        </form>
    	</div>
 {% endblock %}
