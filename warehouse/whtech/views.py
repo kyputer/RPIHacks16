@@ -56,25 +56,27 @@ def signout(request):
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('signin'))
-
-    if request.method == "GET":
+    try:
+        action = int(request.GET['action'])
+        itemno = int(request.GET['itemno'])
         try:
-            action = request.GET['action']
-            itemno = int(request.GET['itemno'])
-            try:
-                if action == "+":
-                    inst = models.Item.objects.get(pk=itemno)
-                    inst.count += 1
-                    inst.save()
-                else:
-                    inst = models.Item.objects.get(pk=itemno)
-                    inst.count -= 1
-                    inst.save()
-            except:
-                return HttpResponseRedirect(reverse('index'))
+            if action == 1:
+                inst = models.Item.objects.get(pk=itemno)
+                inst.count += 1
+                inst.save()
+            else:
+                inst = models.Item.objects.get(pk=itemno)
+                inst.count -= 1
+                inst.save()
         except:
-            pass
-    return render(request, "index.html", {'name': request.user.first_name})
+            return HttpResponseRedirect(reverse('index'))
+    except:
+        pass
+    objs = models.Item.objects.all()
+    items = []
+    for item in objs:
+        items.append([item.itemno, item.itemname, item.cost, item.count])
+    return render(request, "index.html", {'name': request.user.first_name, 'items': items})
 
 
 def newEntry(request):
