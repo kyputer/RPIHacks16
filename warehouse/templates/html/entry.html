@@ -11,27 +11,23 @@
 	  	<li><a href="/logout" class="red-hover">Logout</a></li>
 	</ul>
 	<div style="padding-left: 10px;">
-    	<h1 class="text-white">Welcome to WarehouseTech, {{ name }}</h1>
-        
-        <table>
-            <tr>
-                <th>Item No.</th>
-                <th>Item Name</th>
-                <th>Cost per Unit</th>
-                <th>Count</th>
-            </tr>
-            {% for no, name, cost, count in items %}
-            {% if count > 0 %}
-            <tr>
-                <td>{{ no }}</td>
-                <td>{{ name }}</td>
-                <td>{{ cost }}</td>
-                <td><a href="/?action=0&itemno={{no}}">-</a>{{ count }}<a href="/?action=1&itemno={{no}}">+</a></td>
-            </tr>
-            {% endif %}
-            {% endfor %}
-        </table>
-        
-    	<a href="/entry"><i class="color-circle red" style="width: 60px; height: 60px; font-size: 40px; line-height: 55px; bottom: 10px; right: 15px; position: fixed;">+</i></a>
+        <p>{{ status }}</p>
+        <form method="post">
+            {% csrf_token %}
+            <label for="itemno">Item Bar Code:</label>
+            <input type="text" name="itemno" id="item"/>
+            <a href=""><button>Scan Barcode</button></a>
+            
+            <label for="itemname">Item Name:</label>
+            <input type="text" name="itemname" />
+            
+            <label for="cost">Item Cost:</label>
+            <input type="text" name="cost" />
+            
+            <label for="count">Initial Count:</label>
+            <input type="text" name="count" />
+            
+            <input type="submit" />
+        </form>
    	</div>
 {% endblock %}

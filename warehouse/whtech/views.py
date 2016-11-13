@@ -80,20 +80,24 @@ def index(request):
 
 
 def newEntry(request):
-    return render(request, "entry.html")
-
-"""
-        if request.GET["no"] is not None:
-            try:
-                no = request.GET["no"]
-                cost = request.GET["cost"]
-                inst = models.Item.objects.create(itemno=no, itemname="default", cost=10, count=1)
+    status = ""
+    if request.method == "POST":
+        try:
+            itemno = request.POST["itemno"]
+            itemname = request.POST["itemname"]
+            cost = request.POST["cost"]
+            count = request.POST["count"]
+            if len(models.Item.objects.filter(pk=itemno)) >= 1:
+                inst = models.Item.objects.get(pk=itemno)
+                inst.count += count
+                inst.cost = cost
+                inst.itemname = itemname
                 inst.save()
-            except:
-                inst = models.Item.objects.filter(pk=no)
-                if len(inst) >= 1:
-                    inst = models.Item.objects.get(pk=no)
-                    inst.count += 1
-                    inst.save()
-            return render(request, "index.html", {'name': request.user.first_name})
-"""
+            else:
+                inst = models.Item.objects.create(itemno=itemno, itemname=itemname, cost=cost, count=count)
+                inst.save()
+            status = "Successfully created entry!"
+        except:
+            status = "Error occurred!"
+            
+    return render(request, "entry.html", {"status": status})
