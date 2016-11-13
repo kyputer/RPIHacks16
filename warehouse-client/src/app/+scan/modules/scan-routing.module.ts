@@ -6,7 +6,7 @@ import { ScanComponent } from '../components/';
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: 'scan', component: ScanComponent }
+      { path: '', component: ScanComponent }
     ])
   ],
   exports: [

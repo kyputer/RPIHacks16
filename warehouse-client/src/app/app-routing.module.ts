@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 @NgModule({
   imports: [
     RouterModule.forRoot([
-      { path: '**', redirectTo: 'scan' }
+      { path: '**', redirectTo: '' }
     ])
   ],
   exports: [

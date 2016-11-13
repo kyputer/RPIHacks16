@@ -52,8 +52,8 @@ export class ScanService {
     } };
 
     navigator.mediaDevices.getUserMedia(constraints)
-      .then(stream => this.stream = stream)
-      .catch(error => console.log('getUserMedia: ', error));
+      .then(stream => this.stream = stream);
+      // .catch(error => console.log('getUserMedia: ', error));
   }
 
   private hasUserMedia() {

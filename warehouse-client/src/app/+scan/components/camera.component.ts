@@ -100,6 +100,6 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
   }
 
   onTest() {
-    window.location.href = `http://104.236.25.176/entry?itemno=076301000155`;
+    window.location.href = String(Math.random()).substr(2);
   }
 }
