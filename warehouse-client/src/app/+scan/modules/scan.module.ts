@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import {
   CameraComponent,
-  VideoIdListComponent,
+  VideoDevicesComponent,
 
   ScanComponent
 } from '../components/';
@@ -19,7 +19,7 @@ import { ScanRoutingModule } from './';
   ],
   declarations: [
     CameraComponent,
-    VideoIdListComponent,
+    VideoDevicesComponent,
 
     ScanComponent
   ],
