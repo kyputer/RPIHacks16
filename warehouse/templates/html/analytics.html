@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<ul class="navbar navy">
+		<li style=" float: right; padding-right: 10px;"><h2>Welcome, {{ name }}</h2></li>
+		<li style=" float: left; padding-left: 10px;"><img src="/static/logo.png" style="width: 375px; padding-top: 5px;"/></li>
+	</ul>
+	<ul class="sidebar dark-white" style="float: left; margin-right: 10px;">
+		<li><a href="/" class="red-hover">Home</a></li>
+	  	<li><a href="/analytics" class="red-active dark-red-hover">Analytics</a></li>
+	  	<li><a href="/entry" class="red-hover">New Entry</a></li>
+	  	<li><a href="/logout" class="red-hover">Logout</a></li>
+	</ul>
+	<div style="padding-left: 10px;">
+        <form method="post">
+            {% csrf_token %}
+            <select name="opt">
+                <option value="total">Rank by Total Value</option>
+                <option value="cost">Rank by Cost</option>
+                <option value="amount">Rank by Count</option>
+                <option value="recentval">Smart Rank by Total Value</option>
+                <option value="recentamount">Smart Rank by Amount Sales</option>
+            </select>
+            <input type="submit" />
+        </form>
+        <table class="m-top">
+            <tr>
+                <th>Item name:</th>
+                <th>Item cost:</th>
+                <th>Current amount:</th>
+            </tr>
+            {% for a, b, c in items %}
+            <tr>
+                <td>{{ a }}</td>
+                <td>{{ b }}</td>
+                <td>{{ c }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+   	</div>
+{% endblock %}

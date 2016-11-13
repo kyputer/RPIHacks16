@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
+from operator import itemgetter
 
 from . import models
 # Create your views here.
@@ -107,4 +108,26 @@ def newEntry(request):
 
 
 def analytics(request):
-    pass
+    content = {"name":request.user.first_name}
+    if request.method == "POST":
+        objs = models.Item.objects.all()
+        items = []
+        for item in objs:
+            items.append([item.itemname, item.cost, item.count, item.hidden, item.cost*item.count, item.cost*item.hidden])
+        tp = request.POST["opt"]
+        if tp == 'total':
+            items = sorted(items, key=itemgetter(4), reverse=True)
+        elif tp == 'cost':
+            items = sorted(items, key=itemgetter(1), reverse=True)
+        elif tp == 'amount':
+            items = sorted(items, key=itemgetter(2), reverse=True)
+        elif tp == 'recentval':
+            items = sorted(items, key=itemgetter(5), reverse=True)
+        elif tp == 'recentamount':
+            items = sorted(items, key=itemgetter(3), reverse=True)
+        finl = []
+        for item in items:
+            finl.append(item[:3])
+        content["items"] = finl
+
+    return render(request, "analytics.html", content)

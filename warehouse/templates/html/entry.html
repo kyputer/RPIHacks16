@@ -2,32 +2,30 @@
 
 {% block content %}
 	<ul class="navbar navy">
-		<li style=" float: right; padding-right: 10px;"><a href="/logout" class="text-red" style="text-decoration: none;">Logout</a></li>
-		<li style=" float: right; padding-right: 10px;"><h2>Welcome, {{ name }}</h2></li>
+        <li style=" float: right; padding-right: 10px;"><h2>Welcome, {{ name }}</h2></li>
+        <li style=" float: left; padding-left: 10px;"><img src="/static/logo.png" style="width: 375px; padding-top: 5px;"/></li>
 	</ul>
-	<ul class="sidebar dark-white" style="float: left; margin-right: 10px;">
+	<ul class="sidebar dark-white" style="float: left; margin-right: 100px;">
 		<li><a href="/" class="red-hover">Home</a></li>
+        <li><a href="/analytics" class="red-hover">Analytics</a></li>
 	  	<li><a href="/entry" class="red-active dark-red-hover">New Entry</a></li>
 	  	<li><a href="/logout" class="red-hover">Logout</a></li>
 	</ul>
 	<div style="padding-left: 10px;">
-        <p>{{ status }}</p>
+        <p class="text-white">{{ status }}</p>
         <form method="post">
             {% csrf_token %}
-            <label for="itemno">Item Bar Code:</label>
-            <input type="text" name="itemno" id="item"/>
-            <a href=""><button>Scan Barcode</button></a>
+            <h1 class="text-white">Add new Item</h1>
+            <input type="text" class="textbox m-top m-bottom" placeholder="Item Bar Code" name="itemno" id="item" style="width: 20%"/>
+            <a href=""><button class="btn red m-top m-bottom" style="border: 0; width: 20%">Scan Barcode</button></a>
+
+            <input type="text" class="textbox m-top m-bottom" placeholder="Item Name" name="itemname" style="width: 20%"/>
             
-            <label for="itemname">Item Name:</label>
-            <input type="text" name="itemname" />
+            <input type="text" class="textbox m-top m-bottom" placeholder="Item Cost" name="cost" style="width: 20%"/>
             
-            <label for="cost">Item Cost:</label>
-            <input type="text" name="cost" />
+            <input type="text" class="textbox m-top m-bottom" placeholder="Initial Count" name="count" style="width: 20%"/>
             
-            <label for="count">Initial Count:</label>
-            <input type="text" name="count" />
-            
-            <input type="submit" />
+            <input type="submit" class="btn red m-top m-bottom" style="border: 0; width: 20%" value="Add Item" />
         </form>
    	</div>
 {% endblock %}

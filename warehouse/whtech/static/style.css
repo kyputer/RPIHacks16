@@ -932,7 +932,7 @@ td, th {
 }
 
 th {
-    text-align: left;
+    text-align: center;
 	background-color: #e74c3c !important;
 	color: #ecf0f1 !important;
 }
