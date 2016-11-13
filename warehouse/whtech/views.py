@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.urls import reverse
 
+from . import models
 # Create your views here.
 
 
@@ -55,12 +56,42 @@ def signout(request):
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('signin'))
+
+    if request.method == "GET":
+        try:
+            action = request.GET['action']
+            itemno = int(request.GET['itemno'])
+            try:
+                if action == "+":
+                    inst = models.Item.objects.get(pk=itemno)
+                    inst.count += 1
+                    inst.save()
+                else:
+                    inst = models.Item.objects.get(pk=itemno)
+                    inst.count -= 1
+                    inst.save()
+            except:
+                return HttpResponseRedirect(reverse('index'))
+        except:
+            pass
     return render(request, "index.html", {'name': request.user.first_name})
-
-
-def inventory(request):
-    return render(request, "inventory.html")
 
 
 def newEntry(request):
     return render(request, "entry.html")
+
+"""
+        if request.GET["no"] is not None:
+            try:
+                no = request.GET["no"]
+                cost = request.GET["cost"]
+                inst = models.Item.objects.create(itemno=no, itemname="default", cost=10, count=1)
+                inst.save()
+            except:
+                inst = models.Item.objects.filter(pk=no)
+                if len(inst) >= 1:
+                    inst = models.Item.objects.get(pk=no)
+                    inst.count += 1
+                    inst.save()
+            return render(request, "index.html", {'name': request.user.first_name})
+"""
