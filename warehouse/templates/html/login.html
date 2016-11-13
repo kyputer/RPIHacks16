@@ -1,12 +1,17 @@
-<html>
-	<head>
-		<title>Login</title>
-	</head>
-		<body>
-			<h1>Login</h1>
-			<p>Login here, yes?</p>
-			<li>{{ user_name }}</li>
-			<li>{{ passkey }}
-		</body>
-</html>
+{% extends 'base.html' %}
 
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username: </label>
+        <input type="text" name="username" />
+        
+        <label for="password">Password: </label>
+        <input type="password" name="password" />
+        
+        <input type="submit" title="submit" />
+    </form>
+    {% if error is not None %}
+        <p class="error">Username or password incorrect.</p>
+    {% endif %}
+{% endblock %}

@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <title>WarehouseTech</title>
-    </head>
+{% extends 'base.html' %}
 
-    <body>
-        <h1>Welcome to WarehouseTech</h1>
-    </body>
-</html>
+{% block content %}
+    <h1>Welcome to WarehouseTech, {{ name }}</h1>
+    <p>What do fam?</p>
+{% endblock %}
