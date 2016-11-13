@@ -16,8 +16,8 @@
         <form method="post">
             {% csrf_token %}
             <h1 class="text-white">Add new Item</h1>
-            <input type="text" class="textbox m-top m-bottom" placeholder="Item Bar Code" name="itemno" id="item" style="width: 20%"/>
-            <a href=""><button class="btn red m-top m-bottom" style="border: 0; width: 20%">Scan Barcode</button></a>
+            <input type="text" class="textbox m-top m-bottom" value="{{code}}" placeholder="Item Bar Code" name="itemno" id="item" style="width: 20%"/>
+            <a href="localhost:4200/"><button class="btn red m-top m-bottom" style="border: 0; width: 20%">Scan Barcode</button></a>
 
             <input type="text" class="textbox m-top m-bottom" placeholder="Item Name" name="itemname" style="width: 20%"/>
             

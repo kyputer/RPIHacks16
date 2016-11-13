@@ -84,6 +84,7 @@ def index(request):
 
 def newEntry(request):
     status = ""
+    code = ""
     if request.method == "POST":
         try:
             itemno = request.POST["itemno"]
@@ -103,8 +104,12 @@ def newEntry(request):
             status = "Successfully created entry!"
         except:
             status = "Error occurred!"
-            
-    return render(request, "entry.html", {"name":request.user.first_name, "status": status})
+    elif request.method == "GET":
+        try:
+            code = request.GET["itemno"]
+        except:
+            pass
+    return render(request, "entry.html", {"code": code, "name":request.user.first_name, "status": status})
 
 
 def analytics(request):
