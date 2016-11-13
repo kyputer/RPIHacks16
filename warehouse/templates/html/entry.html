@@ -1,12 +1,37 @@
-<html>
-	<head>
-		<title>New Entry</title>
-	</head>
-	<body>
-		<h1>New Entry</h1>
-		<p>Make new entry, yes?</p>
-		<li>{{ item_name }}</li>
-		<li>{{ untcst }}
+{% extends 'base.html' %}
 
-	</body>
-</html>
+{% block content %}
+	<ul class="navbar navy">
+		<li style=" float: right; padding-right: 10px;"><a href="/logout" class="text-red" style="text-decoration: none;">Logout</a></li>
+		<li style=" float: right; padding-right: 10px;"><h2>Welcome, {{ name }}</h2></li>
+	</ul>
+	<ul class="sidebar dark-white" style="float: left; margin-right: 10px;">
+		<li><a href="/" class="red-hover">Home</a></li>
+	  	<li><a href="/entry" class="red-active dark-red-hover">New Entry</a></li>
+	  	<li><a href="/logout" class="red-hover">Logout</a></li>
+	</ul>
+	<div style="padding-left: 10px;">
+    	<h1 class="text-white">Welcome to WarehouseTech, {{ name }}</h1>
+        
+        <table>
+            <tr>
+                <th>Item No.</th>
+                <th>Item Name</th>
+                <th>Cost per Unit</th>
+                <th>Count</th>
+            </tr>
+            {% for no, name, cost, count in items %}
+            {% if count > 0 %}
+            <tr>
+                <td>{{ no }}</td>
+                <td>{{ name }}</td>
+                <td>{{ cost }}</td>
+                <td><a href="/?action=0&itemno={{no}}">-</a>{{ count }}<a href="/?action=1&itemno={{no}}">+</a></td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </table>
+        
+    	<a href="/entry"><i class="color-circle red" style="width: 60px; height: 60px; font-size: 40px; line-height: 55px; bottom: 10px; right: 15px; position: fixed;">+</i></a>
+   	</div>
+{% endblock %}
