@@ -1,12 +1,33 @@
-<html>
-	<head>
-		<title>Make an account</title>
-	</head>
-	<body>
-		<h1>Register</h1>
-		<p>Register new user, yes?</p>
-		<li>{{ item_name }}</li>
-		<li>{{ untcst }}</li>
-   	</body>
-</html>
+{% extends 'base.html' %}
 
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username: </label>
+        <input type="text" name="username" />
+        
+        <label for="first">First Name: </label>
+        <input type="text" name="first" />
+        
+        <label for="last">Last Name: </label>
+        <input type="text" name="last" />
+        
+        <label for="email">E-mail: </label>
+        <input type="email" name="email" />
+        
+        <label for="password">Password: </label>
+        <input type="password" name="password" />
+        
+        <label for="password2">Repeat Password:</label>
+        <input type="password" name="password2" />
+        
+        <a href="/login"><input type="button" value="Login" /></a>
+        <input type="submit" title="submit" />
+    </form>
+    {% if error is not None %}
+        <p class="error">{{error}}</p>
+    {% endif %}
+    {% if match is not None %}
+        <p class="error">{{match}}</p>
+    {% endif %}
+{% endblock %}

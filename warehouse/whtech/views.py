@@ -18,15 +18,31 @@ def signin(request):
             login(request, user)
             return HttpResponseRedirect(reverse('index'))
         else:
-            return render(request, "login.html", {"error": "Could not authenticate!"})
+            return render(request, "login.html", {"error": "Username or password incorrect."})
     return render(request, "login.html")
 
 
 def signup(request):
-    username = request.POST['username']
-    password = request.POST['passowrd']
-    email = request.POST['email']
-
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        password2 = request.POST['password2']
+        first = request.POST['first']
+        last = request.POST['last']
+        email = request.POST['email']
+        if password != password2:
+            return render(request, "signup.html", {'match': "Passwords do not match."})
+        try:
+            user = User.objects.create_user(username, email=email, password=password)
+        except:
+            return render(request, "signup.html", {'error': "Account already exists"})
+        user.first_name = first
+        user.last_name = last
+        if user is None:
+            return render(request, "signup.html", {'error': "There was an error while creating your account."})
+        user.save()
+        login(request, user)
+        return HttpResponseRedirect(reverse('index'))
     return render(request, "signup.html")
 
 
@@ -39,7 +55,7 @@ def signout(request):
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('signin'))
-    return render(request, "index.html", {'name': request.user.username})
+    return render(request, "index.html", {'name': request.user.first_name})
 
 
 def inventory(request):
