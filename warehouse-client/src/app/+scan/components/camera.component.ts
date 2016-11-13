@@ -93,13 +93,13 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
       Quagga.start();
 
       Quagga.onDetected(res => {
-        window.location.href = `http://104.236.25.176/entry?itemno=${res.codeResult.code}`;
+        window.location.href = `http://localhost:3000/entry?itemno=${res.codeResult.code}`;
         // alert(res);
       })
     });
   }
 
   onTest() {
-    window.location.href = String(Math.random()).substr(2);
+    window.location.href = `http://localhost:3000/entry?itemno=${String(Math.random()).substr(2)}`;
   }
 }
