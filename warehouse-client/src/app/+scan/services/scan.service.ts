@@ -7,7 +7,7 @@ import { extractData, handleError } from '../../shared/lib/';
 
 @Injectable()
 export class ScanService {
-  private leaguesUrl = `${Configs.httpUrl}/api/leagues`;
+  private url = `${Configs.httpUrl}`;
   stream: any;
   videoIds: string[] = [];
   videoId: string = 'select';
@@ -15,13 +15,6 @@ export class ScanService {
   constructor(
     private http: Http
   ) {}
-
-  getSomething(): Observable<any[]> {
-    return this.http
-      .get(`${this.leaguesUrl}/get-something`)
-      .map(extractData)
-      .catch(handleError);
-  }
 
   getVideoIdList() {
     if (!this.hasUserMedia()) {
@@ -37,11 +30,10 @@ export class ScanService {
             this.videoIds = [...this.videoIds, device.deviceId];
           }
         });
-        console.log('this.videoIds', this.videoIds);
       });
   }
 
-  scan(videoId: string) {
+  turnOnCamera(videoId: string) {
     this.videoId = videoId;
 
     const constraints = { audio: false, video: {
@@ -51,13 +43,8 @@ export class ScanService {
     } };
 
     navigator.mediaDevices.getUserMedia(constraints)
-      .then(stream => {
-        console.log('stream: ', stream);
-        this.stream = stream;
-      })
-      .catch(error => {
-        console.log('getUserMedia: ', error);
-      });
+      .then(stream => this.stream = stream)
+      .catch(error => console.log('getUserMedia: ', error));
   }
 
   private hasUserMedia() {

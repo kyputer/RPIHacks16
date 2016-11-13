@@ -7,6 +7,7 @@ export const requestOptions = new RequestOptions({ headers });
 
 export function extractData(res: Response): any {
   const body = res.json();
+  console.log('body', body);
   return !_.isUndefined(body.obj) ? body.obj : {};
 }
 
