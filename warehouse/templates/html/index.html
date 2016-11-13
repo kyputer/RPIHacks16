@@ -2,8 +2,8 @@
 
 {% block content %}
 	<ul class="navbar navy">
-		<li style=" float: right; padding-right: 10px;"><a href="/logout" class="text-red" style="text-decoration: none;">Logout</a></li>
 		<li style=" float: right; padding-right: 10px;"><h2>Welcome, {{ name }}</h2></li>
+		<li style=" float: left; padding-left: 10px;"><img src="/static/logo.png" style="width: 375px; padding-top: 5px;"/></li>
 	</ul>
 	<ul class="sidebar dark-white" style="float: left; margin-right: 10px;">
 		<li><a href="/" class="red-active dark-red-hover">Home</a></li>
@@ -11,9 +11,7 @@
 	  	<li><a href="/logout" class="red-hover">Logout</a></li>
 	</ul>
 	<div style="padding-left: 10px;">
-    	<h1 class="text-white">Welcome to WarehouseTech, {{ name }}</h1>
-        
-        <table>
+        <table class="m-top">
             <tr>
                 <th>Item No.</th>
                 <th>Item Name</th>
@@ -26,7 +24,7 @@
                 <td>{{ no }}</td>
                 <td>{{ name }}</td>
                 <td>{{ cost }}</td>
-                <td><a href="/?action=0&itemno={{no}}">-</a>{{ count }}<a href="/?action=1&itemno={{no}}">+</a></td>
+                <td><a href="/?action=0&itemno={{no}}"><i class="color-circle red" style="width: 20px; height: 20px; font-size: 22px; line-height: 15px; margin-right: 10px;">&#60;</i></a>{{ count }}<a href="/?action=1&itemno={{no}}"><i class="color-circle red" style="width: 20px; height: 20px; font-size: 22px; line-height: 15px; margin-left: 10px;">&#62;</i></a></td>
             </tr>
             {% endif %}
             {% endfor %}
