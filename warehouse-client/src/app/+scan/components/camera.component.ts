@@ -11,16 +11,17 @@ const Quagga = require('quagga');
     }
   `],
   template: `
+    <div>
+      <button class="btn btn-primary" (click)="onScan()">Scan</button>
+    </div>
     <video #videoDOM class="my-video"></video>
-    
-    <button (click)="onTakePhoto()">Scan</button>
-    <canvas #photoDOM></canvas>
+    <!--<canvas #photoDOM></canvas>-->
   `
 })
 export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input() stream: any;
   @ViewChild('videoDOM') videoDOM: ElementRef;
-  @ViewChild('photoDOM') photoDOM: ElementRef;
+  // @ViewChild('photoDOM') photoDOM: ElementRef;
   video: any;
   photo: any;
   subsShowVideoStream: Subscription;
@@ -48,7 +49,7 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
 
   ngAfterViewInit() {
     this.video = this.videoDOM.nativeElement;
-    this.photo = this.photoDOM.nativeElement;
+    // this.photo = this.photoDOM.nativeElement;
 
     this.showVideoStream.emit(null);
   }
@@ -57,7 +58,7 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
     if (this.subsShowVideoStream) this.subsShowVideoStream.unsubscribe();
   }
 
-  onTakePhoto() {
+  onScan() {
     // const canvas = this.photo;
     // const context = canvas.getContext('2d');
     // context.drawImage(this.video, 0, 0, canvas.width, canvas.height);
@@ -77,16 +78,18 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
           showPattern: true
         }
       }
-    }, function(err) {
+    }, err => {
       if (err) {
         console.log(err);
-        return
+        return;
       }
       console.log("Initialization finished. Ready to start");
       Quagga.start();
 
       Quagga.onDetected(res => {
         console.log('res', res);
+        console.log('code', res.codeResult.code);
+        window.location.href = `http://104.236.25.176/entry?itemno=${res.codeResult.code}`;
         // alert(res);
       })
     });

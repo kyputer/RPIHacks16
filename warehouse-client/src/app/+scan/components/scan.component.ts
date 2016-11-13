@@ -24,6 +24,6 @@ export class ScanComponent implements OnInit {
   }
 
   private onSelectVideoId(videoId: string) {
-    this.scanService.scan(videoId);
+    this.scanService.turnOnCamera(videoId);
   }
 }
