@@ -1,20 +1,26 @@
-import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChange, OnInit, AfterViewInit, OnDestroy, EventEmitter } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, OnChanges, SimpleChange, OnInit, AfterViewInit, OnDestroy, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 const Quagga = require('quagga');
 
 @Component({
   selector: 'my-camera',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [`
-    .my-video {
-      z-index: 1;
+    video {
+      border-radius: .3rem;
+      box-shadow: 0 0 1.5rem rgba(0, 0, 0, .15);
     }
   `],
   template: `
     <div>
       <button class="btn btn-primary" (click)="onScan()">Scan</button>
+      <button class="btn btn-secondary" (click)="onTest()">Test</button>
     </div>
-    <video #videoDOM class="my-video"></video>
+    
+    <div class="my-1"></div>
+    
+    <video #videoDOM></video>
     <!--<canvas #photoDOM></canvas>-->
   `
 })
@@ -87,11 +93,13 @@ export class CameraComponent  implements OnChanges, OnInit, AfterViewInit, OnDes
       Quagga.start();
 
       Quagga.onDetected(res => {
-        console.log('res', res);
-        console.log('code', res.codeResult.code);
         window.location.href = `http://104.236.25.176/entry?itemno=${res.codeResult.code}`;
         // alert(res);
       })
     });
+  }
+
+  onTest() {
+    window.location.href = `http://104.236.25.176/entry?itemno=076301000155`;
   }
 }
